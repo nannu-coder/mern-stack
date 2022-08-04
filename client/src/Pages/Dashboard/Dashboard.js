@@ -10,6 +10,8 @@ const Dashboard = () => {
       <h1>This IS Dashboard Page</h1>
       <h3>{user.name}</h3>
       <Link to="/profile">Go To Profile</Link> <br />
+      <Link to="/addjob">Add Job</Link> <br />
+      <Link to='/alljob'>Go To Job Page</Link> <br />
       <Button onClick={logoutUser}>Logout</Button>
     </div>
   );

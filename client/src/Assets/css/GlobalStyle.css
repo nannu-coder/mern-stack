@@ -5,6 +5,11 @@
   align-items: center;
 }
 
-.form-row input {
+.form-row input,
+.form-row select {
+  width: 500px;
+}
+
+.form-box select {
   width: 500px;
 }

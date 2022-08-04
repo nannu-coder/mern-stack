@@ -5,6 +5,8 @@ import Register from "./Pages/Register/Register";
 import Error from "./Pages/Error/Error";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Profile from "./Pages/Profile/Profile";
+import AddJobs from "./Pages/AddJobs/AddJobs";
+import AllJob from "./Components/AllJob";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route index path="/landing" element={<Landing />} />
+          <Route path="/addjob" element={<AddJobs />} />
+          <Route path="/alljob" element={<AllJob />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
