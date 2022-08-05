@@ -4,7 +4,11 @@ import {
   CREATE_JOB_BEGIN,
   CREATE_JOB_ERROR,
   CREATE_JOB_SUCCESS,
+  DELETE_JOB_BEGIN,
   DISPLAY_ALERT,
+  EDIT_JOB_BEGIN,
+  EDIT_JOB_ERROR,
+  EDIT_JOB_SUCCESS,
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
   HANDLE_CHANGE,
@@ -19,6 +23,8 @@ import {
   SETUP_USER_ERROR,
   SETUP_USER_SUCCESS,
   SET_EDIT_JOB,
+  SHOW_STATS_BEGIN,
+  SHOW_STATS_SUCCESS,
   UPDATE_USER_BEGIN,
   UPDATE_USER_ERROR,
   UPDATE_USER_SUCCESS,
@@ -198,6 +204,7 @@ const Reducer = (state, action) => {
   if (action.type === GET_JOBS_BEGIN) {
     return { ...state, isLoading: true, showAlert: false };
   }
+
   if (action.type === GET_JOBS_SUCCESS) {
     return {
       ...state,
@@ -206,6 +213,10 @@ const Reducer = (state, action) => {
       totalJobs: action.payload.totalJobs,
       numOfPages: action.payload.numOfPages,
     };
+  }
+
+  if (action.type === DELETE_JOB_BEGIN) {
+    return { ...state, isLoading: true };
   }
 
   if (action.type === SET_EDIT_JOB) {
@@ -220,6 +231,40 @@ const Reducer = (state, action) => {
       jobLocation,
       jobType,
       status,
+    };
+  }
+
+  if (action.type === EDIT_JOB_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === EDIT_JOB_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "Job Updated!",
+    };
+  }
+  if (action.type === EDIT_JOB_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    };
+  }
+
+  if (action.type === SHOW_STATS_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false };
+  }
+  if (action.type === SHOW_STATS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      stats: action.payload.stats,
+      monthlyApplications: action.payload.monthlyApplications,
     };
   }
 
